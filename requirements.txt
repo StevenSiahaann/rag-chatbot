@@ -1,0 +1,10 @@
+streamlit
+google-generativeai
+langchain-community
+python-dotenv
+googletrans==4.0.0rc1
+spacy
+sentence-transformers
+pypdf
+faiss-cpu
+beautifulsoup4
