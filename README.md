@@ -23,7 +23,11 @@ python -m venv {your_env_name}
 ```bash
 pip install -r requirements.txt
 ```
-## 6. Run the streamlit
+## 6. Download en_core_web_sm language model required by Spacy
+```bash 
+python -m spacy download en_core_web_sm
+```
+## 7. Run the streamlit
 ```bash 
 streamlit run app.py
 ```
