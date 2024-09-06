@@ -5,18 +5,7 @@ from text_processing import clean_translate, loader_text, template_prompt
 from inmemory_vectordb import fais
 import streamlit as st
 from langchain.memory import ConversationBufferMemory
-import spacy
-import subprocess
-import sys
-# def install_spacy_model():
-#     try:
-#         spacy.load("en_core_web_sm")
-#     except OSError:
-#         st.write("Downloading en_core_web_sm model...")
-#         subprocess.check_call([sys.executable, "-m", "spacy", "download", "en_core_web_sm"])
-#         st.write("Model downloaded!")
 def main(chat, embeddings):
-    # install_spacy_model()
     simple_css.add_custom_css()
     list_docs_path=['sample_data/pge_qna_document.pdf']
     documents = loader_text.load_documents_from_pdf('sample_data/pge_qna_document.pdf')
