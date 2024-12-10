@@ -7,7 +7,8 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv() 
-STABILITY_API_KEY = os.getenv("STABILITY_API_KEY")
+STABILITY_API_KEY = st.secrets.get("STABILITY_API_KEY") or os.getenv('STABILITY_API_KEY')
+
 STABILITY_API_HOST = "https://api.stability.ai/v2beta/stable-image/generate/ultra"
 
 def generate_image_from_stability(prompt, aspect_ratio="3:2", seed=0, output_format="png"):
