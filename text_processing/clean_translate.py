@@ -1,14 +1,10 @@
-from googletrans import Translator
+# from googletrans import Translator
+from deep_translator import GoogleTranslator
+
+def translate_to_english(text):
+    translator = GoogleTranslator(source='auto', target='en')
+    return translator.translate(text)
 def clean_prompt(prompt):
     return ' '.replace("\n", " ").replace("\r", " ").join(prompt.strip().split())
-
-def translate_to_english(prompt):
-    translator = Translator()
-    try:
-        return translator.translate(prompt, dest='en').text
-    except Exception as e:
-        print(f"Translation error: {e}")
-        return prompt
-
 def clean_and_translate_prompt(prompt):
     return translate_to_english(clean_prompt(prompt))
