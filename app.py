@@ -97,21 +97,7 @@ def main(chat, embeddings):
             context = " ".join([doc.page_content for doc in context_docs])
         else:
             context = ""
-        def enrich_prompt_with_llm(llm, prompt):
-            """
-            Gunakan LLM untuk memperkaya query dengan sinonim, penjelasan tambahan,
-            atau kontekstualisasi.
-            """
-            enrichment_prompt = f"""
-            Tolong perpanjang atau tambahkan konteks pada query berikut:
-            "{prompt}"
-            Jika query mengandung istilah bahasa Inggris yang merupakan nama tempat atau merek atau suatu istilah yang memang tidak memiliki terjemahan kedalam bahasa indonesia (seperti contoh sentence transformers), jangan terjemahkan. Sebaliknya, tolong lakukan terjemahan ke Bahasa Indonesia jika tidak memenuhi kriteria sebelumnya.
-            Setelah itu,tambahkan setiap frasa yang sudah dalam bahasa indonesia tersebut dengan 5 sinonim atau frasa kontekstual yang relevan untuk masing-masing. Kembalikan hanya string yang sudah diproses sesuai ketentuan tanpa ada tambahan apapun.
-            """
-            enriched_text = llm.send_message(enrichment_prompt).text.strip()
-            return enriched_text            
-        enriched_prompt = enrich_prompt_with_llm(chat, prompt)
-        final_prompt = template_prompt.create_prompt_template(context, loader_text.expand_query_in_indonesian(enriched_prompt))
+        final_prompt = template_prompt.create_prompt_template(context, loader_text.expand_query_in_indonesian(prompt))
         greetings = [
             "Hai! Aku Siri, apa kabar? 😊",
             "Halo! Apa yang bisa aku bantu hari ini? 😎",

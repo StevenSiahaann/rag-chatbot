@@ -7,7 +7,6 @@ from dotenv import load_dotenv
 
 load_dotenv() 
 GOOGLE_API_KEY = st.secrets["secrets"]["GOOGLE_API_KEY"]
-print(GOOGLE_API_KEY)
 genai.configure(api_key=GOOGLE_API_KEY)
 
 @st.cache_resource
