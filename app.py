@@ -7,6 +7,7 @@ import streamlit as st
 import requests
 import base64
 import nltk
+nltk.download('wordnet')
 nltk.download('omw-1.4')
 import random
 from langchain.memory import ConversationBufferMemory
