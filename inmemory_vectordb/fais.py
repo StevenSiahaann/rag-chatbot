@@ -2,7 +2,6 @@ import streamlit as st
 from text_processing import loader_text
 from langchain_community.vectorstores import FAISS
 
-@st.cache_data
 def create_vector_store(_documents, _embeddings, split_by="heading", source_name="unknown"):
     """
     Create a new vector store from a list of documents.
@@ -20,7 +19,6 @@ def create_vector_store(_documents, _embeddings, split_by="heading", source_name
     return FAISS.from_documents(split_docs, _embeddings)
 
 
-@st.cache_data
 def update_vector_store(_vector_store, _new_documents, split_by="sentence", source_name="unknown"):
     """
     Update an existing vector store with new documents.
