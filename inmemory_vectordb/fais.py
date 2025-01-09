@@ -36,5 +36,8 @@ def update_vector_store(_vector_store, _new_documents, split_by="sentence", sour
         FAISS: Updated vector store.
     """
     split_docs = loader_text.split_documents(_new_documents, split_by=split_by, source_name=source_name)
+    valid_split_docs = [doc for doc in split_docs if hasattr(doc, 'page_content') and doc.page_content]
+    if not valid_split_docs:
+        raise ValueError("No valid documents to add to the vector store.")
     _vector_store.add_documents(split_docs)
     return _vector_store
